@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Work+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
+
+body {
+  color: #202020;
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "divFirstLine"
+    "divFields"
+    "divFooter";
+}
+
+.divFirstLine {
+  display: grid;
+  grid-area: divFirstLine;
+  background: #fff;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
+  max-width: 1500px;
+  margin: 0 auto;
+  font-size: 16px;
+  margin-top: 1%;
+}
+
+.divSecondLine {
+  display: grid;
+  grid-area: divFirstLine;
+  background: #fff;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
+  max-width: 1500px;
+  margin: 0 auto;
+  font-size: 16px;
+  margin-top: 1%;
+  border-bottom: 1px solid #808080;
+}
+
+.divFields {
+  grid-area: divFields;
+  display: grid;
+  max-width: 1500px;
+  margin: 0 auto;
+  align-items: center;
+  justify-items: center;
+}
+
+.divFields h3 {
+  text-align: left;
+  margin-left: 10px;
+  font-size: 24px;
+}
+
+.divFields > h4 {
+  font-size: 16px;
+  color: #808080;
+}
+
+.linkText {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+}
+
+.inputField {
+  width: 30%;
+  height: 80%;
+  padding: 10px;
+  border: 2px dashed #fc8019;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.divFooter {
+  grid-area: divFooter;
+}
