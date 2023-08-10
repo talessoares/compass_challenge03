@@ -1,11 +1,11 @@
 import React from "react";
 import Footer from "../components/Footer";
-import styles from "./LoginPage.module.css";
-import { Link } from "react-router-dom";
+import styles from "./RegisterPage.module.css";
+import { Link } from "react-router-dom"; // Import the Link component
 
-function LoginPage() {
+function RegisterPage() {
   return (
-    <div className={`container ${styles.pageContainer}`}>
+    <div className="container">
       <div className={styles.divFirstLine}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -15,8 +15,8 @@ function LoginPage() {
           fill="none"
         >
           <path
-            fillRule="evenodd"
-            clipRule="evenodd"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
             d="M0 4.27414C0 -0.00536072 5.35289 -0.948061 7.80629 2.55836C10.2648 6.07204 11.7134 10.3468 11.7301 14.9596C11.7301 10.3873 13.1371 6.14426 15.5409 2.64121C17.8898 -0.781849 23.0647 0.122685 23.0647 4.27415V9.76576C23.0647 16.1349 17.9015 21.2981 11.5324 21.2981C5.16321 21.2981 0 16.1349 0 9.76575V4.27414Z"
             fill="#FC8019"
           />
@@ -24,20 +24,28 @@ function LoginPage() {
         <h1>FitMe</h1>
       </div>
       <div className={styles.divSecondLine}>
-        <h2>Login</h2>
+        <h2>Register</h2>
       </div>
       <div className={styles.divFields}>
+        <h4>Please Fill out form to Register!</h4>
+        <h3>Full Name</h3>
+        <input className={styles.inputField} type="text" />
         <h3>Username</h3>
+        <input className={styles.inputField} type="text" />
+        <h3>E-mail</h3>
         <input className={styles.inputField} type="text" />
         <h3>Password</h3>
         <input className={styles.inputField} type="password" />
+        <h3>Confirm password</h3>
+        <input className={styles.inputField} type="password" />
         <h4>
-          Don't have an account?{" "}
-          <Link to="/register" className={styles.linkText}>
-            Register
+          Already have an account?{" "}
+          <Link to="/login" className={styles.linkText}>
+            Login
           </Link>
         </h4>
-        <button className={styles.buttonLogin}>Login</button>
+
+        <button className={styles.buttonLogin}>Register</button>
       </div>
       <div className="divFooter">
         <Footer />
@@ -46,4 +54,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

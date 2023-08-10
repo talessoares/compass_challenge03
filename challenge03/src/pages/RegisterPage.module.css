@@ -57,7 +57,6 @@ body {
   margin: 0 auto;
   align-items: center;
   justify-items: center;
-  padding-top: 5%;
 }
 
 .divFields h3 {
@@ -102,7 +101,6 @@ body {
   font-size: 24px;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
-  margin-bottom: 5%;
 }
 
 .buttonLogin:hover {
@@ -111,10 +109,3 @@ body {
 .divFooter {
   grid-area: divFooter;
 }
-
-.page-container {
-  display: grid;
-  grid-template-rows: auto 1fr auto; /* Linhas para o cabeçalho, conteúdo e footer */
-  min-height: 100vh; /* Altura mínima da viewport */
-}
-
