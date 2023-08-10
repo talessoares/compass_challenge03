@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
 
 function Footer() {
+
+    const [shouldShowFirstIcon, setShouldShowFirstIcon] = useState(window.innerWidth > 1500);
+
+    useEffect(() => {
+      // Função que atualiza o estado shouldShowFirstIcon com base na largura da janela
+      const handleWindowResize = () => {
+        setShouldShowFirstIcon(window.innerWidth > 1500);
+      };
+  
+      // Adicionar um ouvinte de evento para detectar a alteração de tamanho da janela
+      window.addEventListener("resize", handleWindowResize);
+  
+      // Remover o ouvinte de evento ao desmontar o componente
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    }, []);
+
   return (
     <footer className={styles.footer}>
       <div className={styles.divFirstLine}>
-        <div className={styles.leftSection}>
+        <div className={styles.leftSection}> 
+        {shouldShowFirstIcon && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -20,6 +39,7 @@ function Footer() {
               fill="white"
             />
           </svg>
+        )}
           <h1>FitMe</h1>
         </div>
         <div className={styles.centerSection}>
@@ -31,6 +51,9 @@ function Footer() {
         <div className={styles.rightSection}>
           <h3>Contact: +91 1234567899</h3>
         </div>
+
+
+            
       </div>
       <div className={styles.divSecondLine}>
         {/* Facebook Icon */}

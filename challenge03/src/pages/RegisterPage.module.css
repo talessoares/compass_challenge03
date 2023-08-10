@@ -1,111 +1,126 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Work+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
-
-body {
-  color: #202020;
-  font-family: "Poppins", sans-serif;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr 1.5fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "divFirstLine"
-    "divFields"
-    "divFooter";
-}
-
-.divFirstLine {
-  display: grid;
-  grid-area: divFirstLine;
-  background: #fff;
-  grid-template-columns: auto auto;
-  gap: 10px;
-  align-items: center;
-  justify-content: start;
-  max-width: 1500px;
-  margin: 0 auto;
-  font-size: 16px;
-  margin-top: 1%;
-}
-
-.divSecondLine {
-  display: grid;
-  grid-area: divFirstLine;
-  background: #fff;
-  grid-template-columns: auto auto;
-  gap: 10px;
-  align-items: center;
-  justify-content: start;
-  max-width: 1500px;
-  margin: 0 auto;
-  font-size: 16px;
-  margin-top: 1%;
-  border-bottom: 1px solid #808080;
-}
-
-.divFields {
-  grid-area: divFields;
-  display: grid;
-  max-width: 1500px;
-  margin: 0 auto;
-  align-items: center;
-  justify-items: center;
-}
-
-.divFields h3 {
-  text-align: left;
-  margin-left: 10px;
-  font-size: 24px;
-}
-
-.divFields > h4 {
-  font-size: 16px;
-  color: #808080;
-}
-
-.linkText {
-  font-weight: bold;
-  text-decoration: none;
-  color: #000;
-}
-
-.inputField {
-  width: 30%;
-  height: 80%;
-  padding: 10px;
-  border: 2px dashed #fc8019;
-  border-radius: 4px;
-  font-size: 14px;
-  text-align: left;
-}
-
-.buttonLogin {
-  display: flex;
-  width: 365px;
-  padding: 15px 25px;
-  border-radius: 10px;
-  background: #fc8019;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-style: none;
-  color: white;
-  font-family: "Poppins" sans-serif;
-  font-size: 24px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-
-.buttonLogin:hover {
-  background: #ffa04d;
-}
-.divFooter {
-  grid-area: divFooter;
-}
+/* Reset de estilos padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Import de fontes do Google Fonts */
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Work+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
+  
+  body {
+    color: #202020;
+    font-family: "Poppins", sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0; /* Remova as margens padrão do corpo */
+    padding: 0; /* Remova o preenchimento padrão do corpo */
+  }
+  
+  /* Estilos para o container principal */
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  
+  /* Estilos para a primeira linha */
+  .divFirstLine,
+  .divSecondLine {
+    display: grid;
+    background: #fff;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    align-items: center;
+    justify-content: start;
+    font-size: 16px;
+    border-bottom: 1px solid #808080;
+    margin-top: 1%;
+    margin-right: 10% !important;
+    margin-left: 10% !important;
+  }
+  
+  /* Estilos para a segunda linha */
+  .divSecondLine {
+    border-bottom: none; /* Remove a borda inferior da segunda linha */
+  }
+  
+  /* Estilos para os campos */
+  .divFields {
+    flex-grow: 1; /* Ocupa todo o espaço restante */
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+  
+  .divFields h3 {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 24px;
+  }
+  
+  .divFields > h4 {
+    font-size: 16px;
+    color: #808080;
+  }
+  
+  /* Estilos para os links */
+  .linkText {
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  /* Estilos para os campos de entrada */
+  .inputField {
+    width: 30%;
+    height: 100%;
+    padding: 10px;
+    border: 2px dashed #fc8019;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  /* Estilos para o botão */
+  .buttonLogin {
+    display: flex;
+    width: 365px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    background: #fc8019;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-style: none;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .buttonLogin:hover {
+    background: #ffa04d;
+  }
+  
+  /* Estilos para o footer */
+  .divFooter {
+    /* Seus estilos para o footer */
+    flex-shrink: 0; /* Evita que o footer encolha */
+    margin-top: auto; /* Mantém o footer na parte inferior */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fc8019;
+    color: white;
+    padding: 10px;
+  }
+  
