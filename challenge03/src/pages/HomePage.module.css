@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Work+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
+
+body {
+  color: #202020;
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "divFirstLine"
+    "divFields"
+    "divFooter";
+}
+
+.divFirstLine {
+  display: grid;
+  grid-area: divFirstLine;
+  background: #fff;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1500px;
+  margin: 0 auto;
+  font-size: 16px;
+  margin-top: 1%;
+  margin-right: 10% !important;
+  margin-left: 10% !important ;
+}
+
+.divLeftContent {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.linkNoDecoration {
+  text-decoration: none;
+  color: #202020;
+}
+
+.divRightContent {
+  display: flex;
+  align-items: center;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  width: 21px;
+  height: 21px;
+  margin-right: 10px;
+  fill: #808080;
+}
+
+.searchInput {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='21' height='21' viewBox='0 0 21 21' fill='none'><path d='M1 20L5.486 15.506M3 9.5C3 11.7543 3.89553 13.9163 5.48959 15.5104C7.08365 17.1045 9.24566 18 11.5 18C13.7543 18 15.9163 17.1045 17.5104 15.5104C19.1045 13.9163 20 11.7543 20 9.5C20 7.24566 19.1045 5.08365 17.5104 3.48959C15.9163 1.89553 13.7543 1 11.5 1C9.24566 1 7.08365 1.89553 5.48959 3.48959C3.89553 5.08365 3 7.24566 3 9.5V9.5Z' stroke='%23808080' stroke-width='2' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: right 10px center;
+  margin-right: 3%;
+}
+
+.signInButton {
+  border-radius: 10px;
+  background: #202020;
+  color: #fdfbfa;
+  border-style: none;
+  margin-left: 2%;
+  max-height: 38px;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.signInButton:hover {
+  background: #444444;
+}
+
+.divContent {
+  display: grid;
+  grid-area: divContent;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 40px;
+  font-size: 16px;
+}
+
+.divTexts {
+  font-size: 60px;
+  color: #202020;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.divTexts > p > span {
+  color: #fc8019;
+}
+
+.divSecondPara {
+  font-size: 16px;
+}
+
+.divImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FoodImage1,
+.FoodImage2 {
+  max-width: 100%;
+  height: auto;
+  margin: 0 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.FoodImage1:hover,
+.FoodImage2:hover {
+  transform: scale(1.05);
+}
+
+.emphasisBackground {
+  background-color: #fff7e0; /* Cor do fundo amarelo claro */
+  padding: 0 20px; /* Espaçamento horizontal maior */
+  border-radius: 20px; /* Borda arredondada para destacar */
+}
+
+.emphasisBackground2 {
+  background-color: #ffcccc; /* Cor do fundo vermelho claro */
+  padding: 0 20px; /* Espaçamento horizontal maior */
+  border-radius: 20px; /* Borda arredondada para destacar */
+}
