@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import styles from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function LoginPage() {
+  useEffect(() => {
+    const headers = {
+      "X-Parse-Application-Id": "lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh",
+      "X-Parse-REST-API-Key": "8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08",
+    };
+
+    const request = {
+      method: "GET",
+      url: "https://parseapi.back4app.com/classes/_User",
+      headers: headers,
+    };
+
+    axios(request)
+      .then(response => {
+        console.log("Users:", response.data.results, "Passwords:" , response.data.results.password);
+      })
+      .catch(error => {
+        console.error("Error getting users:", error);
+      });
+  }, []);
+
   return (
     <div className={`container ${styles.pageContainer}`}>
       <div className={styles.divFirstLine}>
-      <Link to="/" className={styles.linkNoDecoration}>
+        <Link to="/" className={styles.linkNoDecoration}>
           <div className={styles.divLeftContent}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

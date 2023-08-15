@@ -1,7 +1,8 @@
 import React from "react";
 import Footer from "../components/Footer";
-import styles from "./RegisterPage.module.css";
+import styles from "./RestaurantPage.module.css";
 import { Link } from "react-router-dom";
+import RestaurantComponent from "../components/RestaurantComponent";
 
 function RegisterPage() {
   return (
@@ -23,29 +24,10 @@ function RegisterPage() {
         </svg>
         <h1>FitMe</h1>
       </div>
-      <div className={styles.divSecondLine}>
-        <h2>Register</h2>
+      <div className={styles.divSecondLines}>
+        <RestaurantComponent />
       </div>
       <div className={styles.divFields}>
-        <h4>Please Fill out form to Register!</h4>
-        <h3>Full Name</h3>
-        <input className={styles.inputField} type="text" />
-        <h3>Username</h3>
-        <input className={styles.inputField} type="text" />
-        <h3>E-mail</h3>
-        <input className={styles.inputField} type="text" />
-        <h3>Password</h3>
-        <input className={styles.inputField} type="password" />
-        <h3>Confirm password</h3>
-        <input className={styles.inputField} type="password" />
-        <h4>
-          Already have an account?{" "}
-          <Link to="/login" className={styles.linkText}>
-            Login
-          </Link>
-        </h4>
-
-        <button className={styles.buttonLogin}>Register</button>
       </div>
       <div className="divFooter">
         <Footer />

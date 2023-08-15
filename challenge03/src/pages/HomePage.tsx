@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import styles from "./HomePage.module.css";
 import { Link } from "react-router-dom";
 import FoodImage1 from "../components/FoodImage1";
 import FoodImage2 from "../components/FoodImage2";
+import FoodImage3 from "../components/FoodImage3";
+// import Card from "../components/Card";
 
 function HomePage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const carouselItems = [<FoodImage1 />, <FoodImage2 />, <FoodImage3 />];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextSlide = (currentSlide + 1) % carouselItems.length;
+      setCurrentSlide(nextSlide);
+    }, 3000); // Troque o valor para definir o tempo de troca entre os slides (em milissegundos)
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [currentSlide, carouselItems.length]);
+
   return (
     <div className={`container ${styles.pageContainer}`}>
       <div className={styles.divFirstLine}>
         <Link to="/" className={styles.linkNoDecoration}>
-          {" "}
-          {/* Adicione a classe de estilo */}
           <div className={styles.divLeftContent}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -48,9 +67,9 @@ function HomePage() {
             <path
               d="M19.2857 14.4285V7.88092C19.2857 6.49169 18.7777 5.15936 17.8735 4.17702C16.9693 3.19469 15.743 2.64282 14.4643 2.64282C13.1855 2.64282 11.9592 3.19469 11.055 4.17702C10.1508 5.15936 9.64282 6.49169 9.64282 7.88092V14.4285"
               stroke="#202020"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <rect
               x="5.28577"
@@ -59,7 +78,7 @@ function HomePage() {
               height="18.3571"
               rx="3.6"
               stroke="#202020"
-              stroke-width="2"
+              strokeWidth="2"
             />
           </svg>
           <Link to="/login">
@@ -68,13 +87,23 @@ function HomePage() {
         </div>
       </div>
       <div className={styles.divContent}>
+        <div className={styles.rectangle}></div>
         <div className={styles.divTexts}>
-        <p>
-            Premium <span> quality </span> food for your{" "}
-            <span className={styles.emphasisBackground}>🍌</span>{" "}
-            <span> healthy </span>{" "}
-            <span className={styles.emphasisBackground2}>🍅</span>{" "}
-            <span> & Daily Life </span>
+          <p>
+            Premium <span className={styles.emphasisBackground}>quality</span>{" "}
+            food for your{" "}
+            <span
+              className={`${styles.emphasisBackground} ${styles.bananaEmoji}`}
+            >
+              🍌
+            </span>{" "}
+            <span>healthy</span>{" "}
+            <span
+              className={`${styles.emphasisBackground2} ${styles.tomatoEmoji}`}
+            >
+              🍅
+            </span>{" "}
+            <span>& Daily Life</span>
           </p>
           <p className={styles.divSecondPara}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -83,9 +112,36 @@ function HomePage() {
             aliquip ex ea commodo consequat.
           </p>
         </div>
-        <div className={styles.divImage}>
-          <FoodImage1 />
-          <FoodImage2 />
+        <div className={`${styles.divImage} ${styles.carouselContainer}`}>
+          <div
+            className={styles.carousel}
+            style={{
+              transform: `translateX(-${currentSlide * 100}%)`,
+            }}
+          >
+            {carouselItems.map((item, index) => (
+              <div key={index} className={`${styles.carouselItem}`}>
+                {item}
+              </div>
+            ))}
+          </div>
+          <div className={styles.carouselControls}>
+            {carouselItems.map((_, index) => (
+              <div
+                key={index}
+                className={`${styles.carouselControl} ${
+                  currentSlide === index ? styles.active : ""
+                }`}
+                onClick={() => handleSlideChange(index)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className={`${styles.divTexts2}`}>
+          <p>Restaurants</p>
+        </div>
+        <div className={`${styles.divCards}`}>
+          {/* <Card /> */}
         </div>
       </div>
       <div className="divFooter">
