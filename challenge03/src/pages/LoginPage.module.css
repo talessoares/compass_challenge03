@@ -7,6 +7,7 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin: 0;
 }
 
 .container {
@@ -34,7 +35,7 @@ body {
   font-size: 16px;
   margin-top: 1%;
   margin-right: 10% !important;
-  margin-left: 10% !important ; 
+  margin-left: 10% !important ;
 }
 
 .divSecondLine {
@@ -51,7 +52,7 @@ body {
   margin-top: 1%;
   border-bottom: 1px solid #808080;
   margin-right: 10% !important;
-  margin-left: 10% !important ; 
+  margin-left: 10% !important ;
 }
 
 .divLeftContent {
@@ -75,7 +76,7 @@ body {
   padding-top: 5%;
 }
 
-.divFields h3 {
+.divFields > h3 {
   text-align: left;
   margin-left: 10px;
   font-size: 24px;
@@ -93,13 +94,23 @@ body {
 }
 
 .inputField {
-  width: 30%;
+  width: 20%;
   height: 80%;
   padding: 10px;
   border: 2px dashed #fc8019;
   border-radius: 4px;
   font-size: 14px;
   text-align: left;
+}
+
+.divFields > form {
+  width: 1500px; /* Set form width */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .buttonLogin {
@@ -138,6 +149,5 @@ body {
   .divSecondLine {
     /* margin-left: 5%;
     margin-right: 10%; */
-
   }
 }
