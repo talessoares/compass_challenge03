@@ -9,7 +9,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
 
   const handleLogin = (event: { preventDefault: () => void }) => {
     event.preventDefault(); // Prevent the form from submitting
@@ -51,7 +51,6 @@ function LoginPage() {
           }
         }
       }
-      
       `,
       variables: {
         username: username,
@@ -63,6 +62,8 @@ function LoginPage() {
       .post("https://parseapi.back4app.com/graphql", data, { headers })
       .then((response) => {
         console.log("Logged in:", response.data);
+        const sessionToken = response.data.data.logIn.viewer.sessionToken;
+        localStorage.setItem("sessionToken", sessionToken); // Store the token in localStorage
         alert(
           `Login successful!\nResponse:\n${JSON.stringify(
             response.data,
@@ -88,7 +89,6 @@ function LoginPage() {
         }
       });
   };
-
 
   return (
     <div className={`container ${styles.pageContainer}`}>

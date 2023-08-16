@@ -3,42 +3,8 @@ import styles from "./Card.module.css";
 import axios from "axios";
 import FoodImage5 from "./FoodImage5";
 
-function Card() {
-  // const [restaurants, setRestaurants] = useState([]); // State para os dados dos restaurantes
-
-  // useEffect(() => {
-  //   const headers = {
-  //     "X-Parse-Application-Id": "lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh",
-  //     "X-Parse-REST-API-Key": "8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08",
-  //     "Content-Type": "application/json",
-  //   };
-
-  //   const query = `
-  //     query GetAllRestaurants {
-  //       FitMes {
-  //         edges {
-  //           node {
-  //             objectId
-  //             name
-  //             rating
-  //             deliveryTime
-  //             image
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `;
-
-  //   axios
-  //     .post("https://parseapi.back4app.com/graphql", { query }, { headers })
-  //     .then((response) => {
-  //       const restaurantData = response.data.data.restaurants.results;
-  //       setRestaurants(restaurantData);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching restaurants:", error);
-  //     });
-  // }, []);
+function Card({ restaurant }: { restaurant: any }) {
+  const isLowRating = restaurant.rating <= 4.5;
 
   return (
     <div className={styles.container}>
@@ -46,30 +12,44 @@ function Card() {
         <FoodImage5 />
       </div>
       <div className={styles.divTitle}>
-        {/* {restaurants.map((restaurant) => (
-          <div key={restaurant.name}>{restaurant.name}</div>
-        ))} */}
-        <h4>Name</h4>
+        <h4>{restaurant.name}</h4>
       </div>
+
       <div className={styles.divType}>
         <h4>Type of food</h4>
       </div>
       <div className={styles.divRating}>
         <div className={styles.ratingContainer}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="21"
-            height="20"
-            viewBox="0 0 21 20"
-            fill="none"
-          >
-            <path
-              opacity="0.75"
-              d="M20.323 7.04257L14.0445 6.1301L11.2379 0.440169C11.1612 0.284382 11.0351 0.158269 10.8793 0.0816118C10.4886 -0.111267 10.0139 0.0494654 9.81851 0.440169L7.01187 6.1301L0.733413 7.04257C0.560316 7.0673 0.402056 7.1489 0.280889 7.27254C0.134404 7.4231 0.053684 7.62566 0.0564661 7.8357C0.0592481 8.04575 0.145304 8.24609 0.295726 8.39272L4.83828 12.8215L3.76508 19.0753C3.73991 19.2207 3.75601 19.3703 3.81155 19.5071C3.86708 19.6439 3.95984 19.7624 4.07929 19.8492C4.19875 19.9359 4.34012 19.9875 4.48738 19.998C4.63465 20.0085 4.7819 19.9775 4.91246 19.9086L10.5282 16.9561L16.144 19.9086C16.2973 19.9902 16.4753 20.0174 16.6459 19.9877C17.0762 19.9135 17.3655 19.5055 17.2913 19.0753L16.2181 12.8215L20.7607 8.39272C20.8843 8.27156 20.9659 8.1133 20.9907 7.9402C21.0574 7.50746 20.7557 7.10686 20.323 7.04257Z"
-              fill="#1AC84B"
-            />
-          </svg>
-          <h4>4.0</h4>
+          {isLowRating ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+            >
+              <path
+                opacity="0.75"
+                d="M20.3231 7.04257L14.0447 6.1301L11.238 0.440169C11.1614 0.284382 11.0353 0.158269 10.8795 0.0816118C10.4888 -0.111267 10.014 0.0494654 9.81863 0.440169L7.012 6.1301L0.733535 7.04257C0.560438 7.0673 0.402179 7.1489 0.281011 7.27254C0.134526 7.4231 0.0538061 7.62566 0.0565882 7.8357C0.0593702 8.04575 0.145427 8.24609 0.295848 8.39272L4.8384 12.8215L3.7652 19.0753C3.74003 19.2207 3.75613 19.3703 3.81167 19.5071C3.86721 19.6439 3.95996 19.7624 4.07941 19.8492C4.19887 19.9359 4.34024 19.9875 4.4875 19.998C4.63477 20.0085 4.78203 19.9775 4.91258 19.9086L10.5283 16.9561L16.1441 19.9086C16.2974 19.9902 16.4754 20.0174 16.6461 19.9877C17.0763 19.9135 17.3656 19.5055 17.2915 19.0753L16.2183 12.8215L20.7608 8.39272C20.8845 8.27156 20.9661 8.1133 20.9908 7.9402C21.0576 7.50746 20.7559 7.10686 20.3231 7.04257Z"
+                fill="#FC8019"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+            >
+              <path
+                opacity="0.75"
+                d="M20.323 7.04257L14.0445 6.1301L11.2379 0.440169C11.1612 0.284382 11.0351 0.158269 10.8793 0.0816118C10.4886 -0.111267 10.0139 0.0494654 9.81851 0.440169L7.01187 6.1301L0.733413 7.04257C0.560316 7.0673 0.402056 7.1489 0.280889 7.27254C0.134404 7.4231 0.053684 7.62566 0.0564661 7.8357C0.0592481 8.04575 0.145304 8.24609 0.295726 8.39272L4.83828 12.8215L3.76508 19.0753C3.73991 19.2207 3.75601 19.3703 3.81155 19.5071C3.86708 19.6439 3.95984 19.7624 4.07929 19.8492C4.19875 19.9359 4.34012 19.9875 4.48738 19.998C4.63465 20.0085 4.7819 19.9775 4.91246 19.9086L10.5282 16.9561L16.144 19.9086C16.2973 19.9902 16.4753 20.0174 16.6459 19.9877C17.0762 19.9135 17.3655 19.5055 17.2913 19.0753L16.2181 12.8215L20.7607 8.39272C20.8843 8.27156 20.9659 8.1133 20.9907 7.9402C21.0574 7.50746 20.7557 7.10686 20.323 7.04257Z"
+                fill="#1AC84B"
+              />
+            </svg>
+          )}
+          <h4>{restaurant.rating}</h4>
         </div>
       </div>
       <div className={styles.divBlank}></div>
@@ -106,7 +86,7 @@ function Card() {
               />
             </g>
           </svg>
-          <h4>30 min</h4>
+          <h4>{restaurant.deliveryTime}</h4>
         </div>
       </div>
       <div className={styles.divBlank2}></div>

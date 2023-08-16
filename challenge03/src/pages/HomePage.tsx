@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Footer from "../components/Footer";
 import styles from "./HomePage.module.css";
 import { Link } from "react-router-dom";
@@ -9,23 +10,80 @@ import Card from "../components/Card";
 
 function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [sessionToken, setSessionToken] = useState("");
 
   const handleSlideChange = (index: number) => {
     setCurrentSlide(index);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("sessionToken");
+    setIsLoggedIn(false);
+    setSessionToken("");
+    alert("You have been logged out");
+  };
+
   const carouselItems = [<FoodImage1 />, <FoodImage2 />, <FoodImage3 />];
 
   useEffect(() => {
+    const storedSessionToken = localStorage.getItem("sessionToken");
+    if (storedSessionToken) {
+      setIsLoggedIn(true);
+      setSessionToken(storedSessionToken);
+    }
+
     const interval = setInterval(() => {
       const nextSlide = (currentSlide + 1) % carouselItems.length;
       setCurrentSlide(nextSlide);
-    }, 3000); // Troque o valor para definir o tempo de troca entre os slides (em milissegundos)
+    }, 3000);
 
     return () => {
       clearInterval(interval);
     };
   }, [currentSlide, carouselItems.length]);
+
+  //RENDER THE RESTAURANTS
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    const headers = {
+      "X-Parse-Application-Id": "DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL",
+      "X-Parse-Master-Key": "0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9",
+      "X-Parse-Client-Key": "zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V",
+      "Content-Type": "application/json",
+    };
+
+    const query = `
+    query GetAllRestaurants {
+      fitMes {
+        count
+        edges {
+          node {
+            objectId
+            name
+            rating
+            deliveryTime
+            image
+          }
+        }
+      }
+    }
+  `;
+
+    axios
+      .post("https://parseapi.back4app.com/graphql", { query }, { headers })
+      .then((response) => {
+        const restaurantData = response.data.data.fitMes.edges.map(
+          (edge: { node: any }) => edge.node
+        );
+        setRestaurants(restaurantData);
+        console.log("Restaurants:", restaurantData);
+      })
+      .catch((error) => {
+        console.error("Error fetching restaurants:", error);
+      });
+  }, []);
 
   return (
     <div className={`container ${styles.pageContainer}`}>
@@ -81,16 +139,27 @@ function HomePage() {
               strokeWidth="2"
             />
           </svg>
-          <Link to="/login">
-            <button className={styles.signInButton}>Sign In</button>
-          </Link>
+          {isLoggedIn ? (
+            // If user is logged in, show Logout button
+            <button
+              className={styles.signInButton}
+              onClick={() => handleLogout()}
+            >
+              Logout
+            </button>
+          ) : (
+            // If user is not logged in, show Sign In button
+            <Link to="/login">
+              <button className={styles.signInButton}>Sign In</button>
+            </Link>
+          )}
         </div>
       </div>
       <div className={styles.divContent}>
         <div className={styles.rectangle}></div>
         <div className={styles.divTexts}>
           <p>
-            Premium <span className={styles.emphasisBackground}>quality</span>{" "}
+            Premium quality
             food for your{" "}
             <span
               className={`${styles.emphasisBackground} ${styles.bananaEmoji}`}
@@ -137,16 +206,24 @@ function HomePage() {
             ))}
           </div>
         </div>
-        <div className={`${styles.divTexts2}`}>
-          <p>Restaurants</p>
+      </div>
+      <div className={`${styles.divTexts2}`}>
+        <p>Restaurants</p>
+      </div>
+      <div className={`${styles.divCards}`}>
+        <div className={`${styles.row}`}>
+          {restaurants.slice(0, 4).map((restaurant: any) => (
+            <Card  key={restaurant.objectId} restaurant={restaurant} />
+          ))}
         </div>
-        <div className={`${styles.divCards}`}>
-          <Card />
+        <div className={`${styles.row}`}>
+          {restaurants.slice(4, 8).map((restaurant: any) => (
+            <Card key={restaurant.objectId} restaurant={restaurant} />
+          ))}
         </div>
       </div>
-      <div className="divFooter">
-        {/* <Footer /> */}
-      </div>
+
+      <div className="divFooter">{/* <Footer /> */}</div>
     </div>
   );
 }

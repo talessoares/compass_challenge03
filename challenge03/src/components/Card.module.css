@@ -16,6 +16,12 @@
   align-items: center;
   gap: 10px;
   flex-direction: column;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+  background-color: #f0f0f0; /* Altere a cor do fundo no hover */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); /* Adicione um pouco de sombreamento no hover */
 }
 
 .divImage {
