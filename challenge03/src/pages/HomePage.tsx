@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import FoodImage1 from "../components/FoodImage1";
 import FoodImage2 from "../components/FoodImage2";
 import FoodImage3 from "../components/FoodImage3";
-// import Card from "../components/Card";
+import Card from "../components/Card";
 
 function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -141,11 +141,11 @@ function HomePage() {
           <p>Restaurants</p>
         </div>
         <div className={`${styles.divCards}`}>
-          {/* <Card /> */}
+          <Card />
         </div>
       </div>
       <div className="divFooter">
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

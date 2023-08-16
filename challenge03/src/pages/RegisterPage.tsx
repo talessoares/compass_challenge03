@@ -11,11 +11,10 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [nameError, setNameError] = useState("");
-  const [emailError, setEmailError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [confirmpasswordError, setConfirmPasswordError] = useState("");
-
 
   const handleRegister = () => {
     if (fullName.length < 5) {
@@ -25,11 +24,6 @@ function RegisterPage() {
 
     if (username.length < 5) {
       setUsernameError("Username must be at least 5 characters long");
-      return;
-    }
-
-    if (!email.includes("@")) {
-      setEmailError("Invalid e-mail address");
       return;
     }
 
@@ -43,24 +37,43 @@ function RegisterPage() {
       return;
     }
 
-    // Reset the name error message if valid
+    // Reset the error messages if valid
     setNameError("");
     setUsernameError("");
-    setEmailError("");
     setPasswordError("");
-
+    setEmailError("");
+    setConfirmPasswordError("");
 
     const headers = {
-      "X-Parse-Application-Id": "lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh",
-      "X-Parse-REST-API-Key": "8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08",
+      "X-Parse-Application-Id": "DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL",
+      "X-Parse-Master-Key": "0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9",
+      "X-Parse-Client-Key": "zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V",
       "Content-Type": "application/json",
     };
 
     const data = {
-      username: username,
-      password: password,
-      fullName: fullName,
-      email: email,
+      query: `
+        mutation SignUp($username: String!, $password: String!) {
+          signUp(input: {
+            fields: {
+              username: $username
+              password: $password
+            }
+          }) {
+            viewer {
+              user {
+                id
+                createdAt
+              }
+              sessionToken
+            }
+          }
+        }
+      `,
+      variables: {
+        username: username,
+        password: password,
+      },
     };
 
     axios
@@ -68,10 +81,12 @@ function RegisterPage() {
       .then((response) => {
         // Handle successful registration here
         console.log("User created:", response.data);
+        alert(`Registration successful!\nResponse:\n${JSON.stringify( response.data, null, 2 )}` );
       })
       .catch((error) => {
         // Handle registration error here
         console.error("Registration error:", error);
+        alert(`Registration failed: ${error.response.data.error}`);
       });
   };
 

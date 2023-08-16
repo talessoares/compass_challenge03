@@ -11,7 +11,7 @@ function LoginPage() {
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
-  const handleLogin = (event: { preventDefault: () => void; }) => {
+  const handleLogin = (event: { preventDefault: () => void }) => {
     event.preventDefault(); // Prevent the form from submitting
 
     if (username.length < 5) {
@@ -27,18 +27,40 @@ function LoginPage() {
     setUsernameError("");
 
     const headers = {
-      "X-Parse-Application-Id": "lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh",
-      "X-Parse-REST-API-Key": "8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08",
+      "X-Parse-Application-Id ": "DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL",
+      "X-Parse-Master-Key": "0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9",
+      "X-Parse-Client-Key": "zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V",
     };
 
     // Build the query parameters
-    const queryParams = new URLSearchParams({
-      username: username,
-      password: password,
-    });
+    const data = {
+      query: `
+      mutation LogIn($username: String!, $password: String!) {
+        logIn(input: {
+          username: $username
+          password: $password
+        }) {
+          viewer {
+            user {
+              id
+              createdAt
+              updatedAt
+              username
+            }
+            sessionToken
+          }
+        }
+      }
+      
+      `,
+      variables: {
+        username: username,
+        password: password,
+      },
+    };
 
     axios
-      .get(`https://parseapi.back4app.com/login?${queryParams}`, { headers })
+      .post("https://parseapi.back4app.com/graphql", data, { headers })
       .then((response) => {
         console.log("Logged in:", response.data);
         alert(
@@ -66,6 +88,7 @@ function LoginPage() {
         }
       });
   };
+
 
   return (
     <div className={`container ${styles.pageContainer}`}>

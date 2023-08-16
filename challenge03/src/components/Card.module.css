@@ -1,5 +1,73 @@
-.background {
-  background-color: #f8f8f8;
+.container {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "divImage divImage divImage"
+    "divTitle divTitle divTitle"
+    "divType divBlank divRating"
+    "divBlank2 divTime divBlank3";
+  background: #f8f8f8;
+  display: flex;
+  padding: 25px;
   border-radius: 10px;
-  
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.divImage {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza horizontalmente */
+}
+
+.divTitle {
+  grid-area: divTitle;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza horizontalmente */
+  flex-direction: column; /* Coloca o nome abaixo do conteúdo */
+}
+
+.divType {
+  grid-area: divType;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  gap: 8px; /* Espaçamento entre a divType e divRating */
+  color: #808080;
+}
+
+.divRating {
+  grid-area: divRating;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o ícone e o número */
+  gap: 8px; /* Espaçamento entre o ícone e o número */
+}
+
+.divBlank {
+  grid-area: divBlank;
+}
+
+.divTime {
+  grid-area: divTime;
+}
+
+.timeContainer {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o ícone e o número */
+  gap: 8px; /* Espaçamento entre o ícone e o número */
+}
+
+.divBlank2 {
+  grid-area: divBlank2;
+}
+
+.divBlank3 {
+  grid-area: divBlank3;
 }
