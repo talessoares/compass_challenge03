@@ -58,8 +58,68 @@ body {
   max-width: 1500px;
   margin: 0 auto;
   gap: 10px;
+  padding-top: 40px;
 }
 
+.fieldsContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.field {
+  flex: 1;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.dishList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-right: 1px solid #808080;
+}
+
+.listItem {
+  padding: 8px 16px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.listItem:hover {
+  color: #fc8019;
+  cursor: pointer;
+}
+
+.divDishContainer {
+  display: flex;
+  gap: 10px;
+  width: 500px;
+}
+
+.divDishInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.divImageColumn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.divImageDish {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divPriceDescription {
+  color: #808080;
+  word-wrap: break-word;
+  
+}
 .divFields h3 {
   text-align: left;
   margin-left: 10px;
@@ -122,4 +182,193 @@ body {
   background-color: #fc8019;
   color: white;
   padding: 10px;
+}
+
+body {
+  color: #202020;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  height: 100%;
+}
+
+.cardContainer {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #202020;
+  color: #fff;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.cardTitle {
+  font-size: 32px;
+}
+
+.FoodImage4 {
+  height: 100%;
+  width: auto;
+  padding-right: 2%;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+}
+
+.imageAndText {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.divTexts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.divOffer {
+  display: flex;
+  border: 2px dashed #fc8019;
+  border-radius: 20px;
+  padding: 30px 30px;
+  height: 80%;
+  margin-top: 5%;
+  margin-left: 2%;
+  flex-direction: column;
+}
+
+.cardOffer {
+  font-size: 24px;
+  color: #fc8019;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.divOfferText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.offerItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.offerItem > p {
+  white-space: nowrap;
+}
+
+.divInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-top: 10%;
+}
+
+.divDelivery {
+  display: flex;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+}
+
+.divPrice {
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+}
+
+.divRatings {
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+}
+
+.cardNumberRatings {
+  white-space: nowrap;
+}
+
+.divPrice > p {
+  white-space: nowrap;
+}
+
+.cardDeliveryTime {
+  white-space: nowrap;
+  margin: 0;
+}
+
+.cardTime,
+.cardDeliveryTime {
+  margin: 0;
+}
+
+.searchBoxContainer {
+  position: absolute;
+  top: 30%;
+  right: 55%;
+  width: 20%;
+  transform: translateX(50%);
+}
+
+.searchBoxContainer2 {
+  position: absolute;
+  top: 30%;
+  right: 35%;
+  width: 20%;
+  transform: translateX(50%);
+}
+
+.searchBox {
+  width: 350px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='21' height='21' viewBox='0 0 21 21' fill='none'><path d='M1 20L5.486 15.506M3 9.5C3 11.7543 3.89553 13.9163 5.48959 15.5104C7.08365 17.1045 9.24566 18 11.5 18C13.7543 18 15.9163 17.1045 17.5104 15.5104C19.1045 13.9163 20 11.7543 20 9.5C20 7.24566 19.1045 5.08365 17.5104 3.48959C15.9163 1.89553 13.7543 1 11.5 1C9.24566 1 7.08365 1.89553 5.48959 3.48959C3.89553 5.08365 3 7.24566 3 9.5V9.5Z' stroke='%23808080' stroke-width='2' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: right 10px center;
+  margin-right: 3%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #404040;
+  background-color: #fff;
+  padding: 8px 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchButton svg {
+  margin-right: 5px;
 }

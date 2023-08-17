@@ -16,7 +16,7 @@ function Card({ restaurant }: { restaurant: any }) {
       </div>
 
       <div className={styles.divType}>
-        <h4>Type of food</h4>
+        <h4>{restaurant.location}</h4>
       </div>
       <div className={styles.divRating}>
         <div className={styles.ratingContainer}>

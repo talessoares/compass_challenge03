@@ -7,6 +7,7 @@ import FoodImage1 from "../components/FoodImage1";
 import FoodImage2 from "../components/FoodImage2";
 import FoodImage3 from "../components/FoodImage3";
 import Card from "../components/Card";
+import RestaurantPage from "./RestaurantPage";
 
 function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,6 +66,7 @@ function HomePage() {
             rating
             deliveryTime
             image
+            location
           }
         }
       }
@@ -159,8 +161,7 @@ function HomePage() {
         <div className={styles.rectangle}></div>
         <div className={styles.divTexts}>
           <p>
-            Premium quality
-            food for your{" "}
+            Premium quality food for your{" "}
             <span
               className={`${styles.emphasisBackground} ${styles.bananaEmoji}`}
             >
@@ -213,12 +214,22 @@ function HomePage() {
       <div className={`${styles.divCards}`}>
         <div className={`${styles.row}`}>
           {restaurants.slice(0, 4).map((restaurant: any) => (
-            <Card  key={restaurant.objectId} restaurant={restaurant} />
+            <Link
+              to={`/restaurant/${restaurant.objectId}`}
+              className={styles.cardLink}
+            >
+              <Card key={restaurant.objectId} restaurant={restaurant} />
+            </Link>
           ))}
         </div>
         <div className={`${styles.row}`}>
           {restaurants.slice(4, 8).map((restaurant: any) => (
-            <Card key={restaurant.objectId} restaurant={restaurant} />
+            <Link
+              to={`/restaurant/${restaurant.objectId}`}
+              className={styles.cardLink}
+            >
+              <Card key={restaurant.objectId} restaurant={restaurant} />
+            </Link>
           ))}
         </div>
       </div>
