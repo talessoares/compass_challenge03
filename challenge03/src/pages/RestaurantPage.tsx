@@ -17,6 +17,13 @@ interface DishData {
   name: string;
   price: number;
   description: string;
+  quantity: number;
+}
+
+interface CartItem {
+  name: string;
+  price: number;
+  quantity: number;
 }
 
 function RestaurantPage() {
@@ -25,6 +32,35 @@ function RestaurantPage() {
     null
   );
   const [dishData, setDishData] = useState<DishData[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartTotal, setCartTotal] = useState(0);
+
+  const addToCart = (item: CartItem) => {
+    const existingItemIndex = cartItems.findIndex(
+      (cartItem) => cartItem.name === item.name
+    );
+
+    if (existingItemIndex >= 0) {
+      const newCartItems = [...cartItems];
+      newCartItems[existingItemIndex].quantity++;
+      newCartItems[existingItemIndex].price += item.price;
+      setCartItems(newCartItems);
+    } else {
+      const newItem = { ...item, quantity: 1 };
+      setCartItems([...cartItems, newItem]);
+    }
+
+    // Calculando o total do carrinho
+    const cartTotal = cartItems.reduce(
+      (total, cartItem) => total + cartItem.price,
+      0
+    );
+    setCartTotal(cartTotal);
+  };
+
+  const handleCheckoutClick = () => {
+    alert("Checkout clicked! Your total is " + cartTotal);
+  }
 
   useEffect(() => {
     const headers = {
@@ -234,7 +270,7 @@ function RestaurantPage() {
                   </div>
                   <div className={styles.divPriceDish}>
                     {dishData && dishData[0] && (
-                      <h4 className={styles.listItem}>{dishData[0].price}</h4>
+                      <h4 className={styles.listItem}>$ {dishData[0].price}</h4>
                     )}
                   </div>
                   <div className={styles.divPriceDescription}>
@@ -248,6 +284,14 @@ function RestaurantPage() {
                 <div className={styles.divImageColumn}>
                   <div className={styles.divImageDish}>
                     <FoodImage6 />
+                    {dishData && dishData[0] && (
+                      <button
+                        className={styles.imageButton}
+                        onClick={() => addToCart(dishData[0])}
+                      >
+                        Add +
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -262,7 +306,7 @@ function RestaurantPage() {
                   </div>
                   <div className={styles.divPriceDish}>
                     {dishData && dishData[1] && (
-                      <h4 className={styles.listItem}>{dishData[1].price}</h4>
+                      <h4 className={styles.listItem}>$ {dishData[1].price}</h4>
                     )}
                   </div>
                   <div className={styles.divPriceDescription}>
@@ -276,6 +320,14 @@ function RestaurantPage() {
                 <div className={styles.divImageColumn}>
                   <div className={styles.divImageDish}>
                     <FoodImage6 />
+                    {dishData && dishData[0] && (
+                      <button
+                        className={styles.imageButton}
+                        onClick={() => addToCart(dishData[1])}
+                      >
+                        Add +
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -290,7 +342,7 @@ function RestaurantPage() {
                   </div>
                   <div className={styles.divPriceDish}>
                     {dishData && dishData[2] && (
-                      <h4 className={styles.listItem}>{dishData[2].price}</h4>
+                      <h4 className={styles.listItem}>$ {dishData[2].price}</h4>
                     )}
                   </div>
                   <div className={styles.divPriceDescription}>
@@ -304,19 +356,45 @@ function RestaurantPage() {
                 <div className={styles.divImageColumn}>
                   <div className={styles.divImageDish}>
                     <FoodImage6 />
+                    {dishData && dishData[0] && (
+                      <button
+                        className={styles.imageButton}
+                        onClick={() => addToCart(dishData[2])}
+                      >
+                        Add +
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={styles.field2}>{/* Conteúdo da div field2 */}</div>
+          <div className={styles.field2}>
+            <h2>Cart</h2>
+            {cartItems.map((item, index) => (
+              <div key={index} className={styles.cartItem}>
+                <p>{item.name}</p>
+                <p>${item.price}</p>
+              </div>
+            ))}
+            <div className={styles.cartTotal}>
+              <p>Total</p>
+              <p>${cartTotal}</p>
+            </div>
+            <div className={styles.divCartButton}>
+              <button
+                onClick={handleCheckoutClick}
+                className={styles.cartButton}
+              >
+                Checkout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="divFooter">
-        {/* <Footer /> */}
-      </div>
+      <div className="divFooter">{/* <Footer /> */}</div>
     </div>
   );
 }
