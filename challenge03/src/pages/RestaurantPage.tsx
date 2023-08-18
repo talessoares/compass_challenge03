@@ -60,7 +60,7 @@ function RestaurantPage() {
 
   const handleCheckoutClick = () => {
     alert("Checkout clicked! Your total is " + cartTotal);
-  }
+  };
 
   useEffect(() => {
     const headers = {
@@ -98,8 +98,8 @@ function RestaurantPage() {
     axios
       .post("https://parseapi.back4app.com/graphql", { query }, { headers })
       .then((response) => {
-        console.log("Response data:", response.data); // Verificar a estrutura da resposta
-        const restaurantData = response.data.data.fitMe; // Ajustar o acesso aos dados corretos
+        console.log("Response data:", response.data);
+        const restaurantData = response.data.data.fitMe;
         const dishData = response.data.data.fitMe.topDishes;
         setRestaurantData(response.data.data.fitMe);
         console.log("Restaurants:", restaurantData);
@@ -110,13 +110,10 @@ function RestaurantPage() {
       })
       .catch((error) => {
         if (error.response) {
-          // O servidor respondeu, mas com status de erro
           console.error("Error response:", error.response.data);
         } else if (error.request) {
-          // A solicitação foi feita, mas não houve resposta do servidor
           console.error("No response from server:", error.request);
         } else {
-          // Ocorreu um erro ao configurar a solicitação
           console.error("Error setting up request:", error.message);
         }
       });
@@ -125,24 +122,27 @@ function RestaurantPage() {
   return (
     <div className="container">
       <div className={styles.divFirstLine}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="22"
-          viewBox="0 0 24 22"
-          fill="none"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M0 4.27414C0 -0.00536072 5.35289 -0.948061 7.80629 2.55836C10.2648 6.07204 11.7134 10.3468 11.7301 14.9596C11.7301 10.3873 13.1371 6.14426 15.5409 2.64121C17.8898 -0.781849 23.0647 0.122685 23.0647 4.27415V9.76576C23.0647 16.1349 17.9015 21.2981 11.5324 21.2981C5.16321 21.2981 0 16.1349 0 9.76575V4.27414Z"
-            fill="#FC8019"
-          />
-        </svg>
-        <h1>FitMe</h1>
+        <Link to="/" className={styles.linkNoDecoration}>
+          <div className={styles.divLeftContent}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="22"
+              viewBox="0 0 24 22"
+              fill="none"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M0 4.27414C0 -0.00536072 5.35289 -0.948061 7.80629 2.55836C10.2648 6.07204 11.7134 10.3468 11.7301 14.9596C11.7301 10.3873 13.1371 6.14426 15.5409 2.64121C17.8898 -0.781849 23.0647 0.122685 23.0647 4.27415V9.76576C23.0647 16.1349 17.9015 21.2981 11.5324 21.2981C5.16321 21.2981 0 16.1349 0 9.76575V4.27414Z"
+                fill="#FC8019"
+              />
+            </svg>
+            <h1>FitMe</h1>
+          </div>
+        </Link>
       </div>
       <div className={styles.divSecondLines}>
-        {/* <RestaurantComponent restaurantData={restaurantData} /> */}
         <div className={styles.cardContainer}>
           <div className={styles.card}>
             <FoodImage4 />

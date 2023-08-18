@@ -20,29 +20,29 @@
 }
 
 .container:hover {
-  background-color: #f0f0f0; /* Altere a cor do fundo no hover */
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); /* Adicione um pouco de sombreamento no hover */
+  background-color: #f0f0f0;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .divImage {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centraliza horizontalmente */
+  justify-content: center;
 }
 
 .divTitle {
   grid-area: divTitle;
   display: flex;
   align-items: center;
-  justify-content: center; /* Centraliza horizontalmente */
-  flex-direction: column; /* Coloca o nome abaixo do conteúdo */
+  justify-content: center;
+  flex-direction: column;
 }
 
 .divType {
   grid-area: divType;
   display: flex;
-  align-items: center; /* Centraliza verticalmente */
-  gap: 8px; /* Espaçamento entre a divType e divRating */
+  align-items: center;
+  gap: 8px;
   color: #808080;
 }
 
@@ -52,8 +52,8 @@
 
 .ratingContainer {
   display: flex;
-  align-items: center; /* Centraliza verticalmente o ícone e o número */
-  gap: 8px; /* Espaçamento entre o ícone e o número */
+  align-items: center;
+  gap: 8px;
 }
 
 .divBlank {
@@ -66,8 +66,8 @@
 
 .timeContainer {
   display: flex;
-  align-items: center; /* Centraliza verticalmente o ícone e o número */
-  gap: 8px; /* Espaçamento entre o ícone e o número */
+  align-items: center;
+  gap: 8px;
 }
 
 .divBlank2 {

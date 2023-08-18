@@ -151,27 +151,27 @@ body {
 }
 
 .emphasisBackground {
-  background-color: #fff7e0; /* Cor do fundo amarelo claro */
-  padding: 0 20px; /* Espaçamento horizontal maior */
-  border-radius: 20px; /* Borda arredondada para destacar */
+  background-color: #fff7e0;
+  padding: 0 20px;
+  border-radius: 20px;
 }
 
 .emphasisBackground2 {
-  background-color: #ffcccc; /* Cor do fundo vermelho claro */
-  padding: 0 20px; /* Espaçamento horizontal maior */
-  border-radius: 20px; /* Borda arredondada para destacar */
+  background-color: #ffcccc;
+  padding: 0 20px;
+  border-radius: 20px;
 }
 
 .bananaEmoji {
   animation: moveBanana 3s linear infinite alternate;
-  display: inline-block; /* Para garantir que a animação funcione corretamente */
-  position: relative; /* Para permitir o movimento dentro do elemento pai */
+  display: inline-block;
+  position: relative;
 }
 
 .tomatoEmoji {
   animation: moveTomato 3s linear infinite alternate;
-  display: inline-block; /* Para garantir que a animação funcione corretamente */
-  position: relative; /* Para permitir o movimento dentro do elemento pai */
+  display: inline-block;
+  position: relative;
 }
 
 @keyframes moveBanana {
@@ -216,10 +216,10 @@ body {
   width: 600px;
   height: 400px;
   transform: rotate(-37.836deg);
-  background-color: #ffdaa5; /* Cor do retângulo */
-  top: 30%; /* Ajuste esta porcentagem para a posição vertical desejada */
+  background-color: #ffdaa5;
+  top: 30%;
   left: -20%;
-  z-index: -1; /* Coloca o retângulo atrás do conteúdo */
+  z-index: -1;
   border-radius: 50%;
 }
 
@@ -240,16 +240,15 @@ body {
 .divCards {
   margin-top: 40px;
   display: flex;
-  flex-wrap: wrap; /* Adicione esta linha para permitir que os cards quebrem para a próxima linha */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 20px; /* Espaçamento entre os cards */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   max-width: 1500px;
   margin: 0 auto;
   padding: 0 40px;
 }
 
-/* Adicione estilos para o card individual */
 .card {
   background: red;
   border-radius: 10px;
@@ -263,12 +262,11 @@ body {
   box-sizing: border-box;
 }
 
-/* Estilo para o efeito de hover */
 .card:hover {
-  transform: translateY(-5px); /* Eleva o card levemente quando hover */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-/* Estilos para as informações dentro do card */
+
 .cardName {
   font-size: 18px;
   font-weight: bold;
@@ -295,6 +293,6 @@ body {
   gap: 10px;
 }
 
-.cardLink{
+.cardLink {
   text-decoration: none;
 }

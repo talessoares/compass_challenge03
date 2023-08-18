@@ -73,7 +73,8 @@ body {
   margin: 0 auto;
   align-items: center;
   justify-items: center;
-  padding-top: 5%;
+  padding-top: 10.25%;
+  padding-bottom: 5%;
 }
 
 .divFields > h3 {
@@ -140,14 +141,11 @@ body {
 
 .page-container {
   display: grid;
-  grid-template-rows: auto 1fr auto; /* Linhas para o cabeçalho, conteúdo e footer */
-  min-height: 100vh; /* Altura mínima da viewport */
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
-@media (max-width: 1500px) {
-  .divFirstLine,
-  .divSecondLine {
-    /* margin-left: 5%;
-    margin-right: 10%; */
-  }
+.linkNoDecoration {
+  text-decoration: none;
+  color: #202020;
 }

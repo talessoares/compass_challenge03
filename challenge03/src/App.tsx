@@ -4,35 +4,20 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import RestaurantPage from "./pages/RestaurantPage";
-// import RestaurantDetails from "./components/RestaurantDetails";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<> <HomePage /> <Footer /> </>} />
+        <Route path="/login" element={<> <LoginPage /> <Footer /> </>} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/restaurant" element={<RestaurantPage />} />
-        <Route path="/restaurant/:id" element={<RestaurantPage />} />
-
+        <Route path="/restaurant/:id" element={<> <RestaurantPage /> <Footer /> </>}  />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-
-// import React from "react";
-// import LoginPage from "./pages/LoginPage";
-// import "./App.css";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <LoginPage />
-//     </div>
-//   );
-// }
-
-// export default App;

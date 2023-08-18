@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "./Card.module.css";
-import axios from "axios";
 import FoodImage5 from "./FoodImage5";
 
 function Card({ restaurant }: { restaurant: any }) {

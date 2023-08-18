@@ -15,20 +15,18 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin: 0; /* Remova as margens padrão do corpo */
-  padding: 0; /* Remova o preenchimento padrão do corpo */
+  margin: 0;
+  padding: 0;
 }
 
-/* Estilos para o container principal */
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ocupa a altura total da viewport */
+  min-height: 100vh;
   max-width: 1500px;
   margin: 0 auto;
 }
 
-/* Estilos para a primeira linha */
 .divFirstLine,
 .divSecondLine {
   display: grid;
@@ -44,14 +42,12 @@ body {
   margin-left: 10% !important;
 }
 
-/* Estilos para a segunda linha */
 .divSecondLine {
-  border-bottom: none; /* Remove a borda inferior da segunda linha */
+  border-bottom: none;
 }
 
-/* Estilos para os campos */
 .divFields {
-  flex-grow: 1; /* Ocupa todo o espaço restante */
+  flex-grow: 1;
   display: grid;
   align-items: center;
   justify-items: center;
@@ -59,6 +55,7 @@ body {
   margin: 0 auto;
   gap: 20px;
   padding-top: 40px;
+  margin-bottom: 30%;
 }
 
 .fieldsContainer {
@@ -120,7 +117,6 @@ body {
 .divPriceDescription {
   color: #808080;
   word-wrap: break-word;
-  
 }
 .divFields h3 {
   text-align: left;
@@ -133,14 +129,12 @@ body {
   color: #808080;
 }
 
-/* Estilos para os links */
 .linkText {
   font-weight: bold;
   text-decoration: none;
   color: #000;
 }
 
-/* Estilos para os campos de entrada */
 .inputField {
   width: 30%;
   height: 100%;
@@ -151,7 +145,6 @@ body {
   text-align: left;
 }
 
-/* Estilos para o botão */
 .buttonLogin {
   display: flex;
   width: 365px;
@@ -173,11 +166,9 @@ body {
   background: #ffa04d;
 }
 
-/* Estilos para o footer */
 .divFooter {
-  /* Seus estilos para o footer */
-  flex-shrink: 0; /* Evita que o footer encolha */
-  margin-top: auto; /* Mantém o footer na parte inferior */
+  flex-shrink: 0;
+  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,24 +371,24 @@ body {
   bottom: -45px;
   left: 50%;
   transform: translateX(-50%);
-  color: #1AC84B;
+  color: #1ac84b;
   background-color: #fff;
   padding: 15px 25px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 10px;
-  white-space: nowrap; 
+  white-space: nowrap;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .imageButton:hover {
-  background-color: #1AC84B;
+  background-color: #1ac84b;
   color: #fff;
 }
 
-.cartButton{
+.cartButton {
   /* position: absolute;
   bottom: -45px;
   left: 50%; */
@@ -408,10 +399,18 @@ body {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 10px;
-  white-space: nowrap; 
+  white-space: nowrap;
   font-size: 16px;
   cursor: pointer;
-  
+}
 
+.linkNoDecoration {
+  text-decoration: none;
+  color: #202020;
+}
 
+.divLeftContent {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }

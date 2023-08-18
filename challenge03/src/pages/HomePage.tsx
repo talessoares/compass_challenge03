@@ -233,8 +233,6 @@ function HomePage() {
           ))}
         </div>
       </div>
-
-      <div className="divFooter">{/* <Footer /> */}</div>
     </div>
   );
 }

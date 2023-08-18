@@ -2,44 +2,42 @@ import React, { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
 
 function Footer() {
+  const [shouldShowFirstIcon, setShouldShowFirstIcon] = useState(
+    window.innerWidth > 1500
+  );
 
-    const [shouldShowFirstIcon, setShouldShowFirstIcon] = useState(window.innerWidth > 1500);
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setShouldShowFirstIcon(window.innerWidth > 1500);
+    };
 
-    useEffect(() => {
-      // Função que atualiza o estado shouldShowFirstIcon com base na largura da janela
-      const handleWindowResize = () => {
-        setShouldShowFirstIcon(window.innerWidth > 1500);
-      };
-  
-      // Adicionar um ouvinte de evento para detectar a alteração de tamanho da janela
-      window.addEventListener("resize", handleWindowResize);
-  
-      // Remover o ouvinte de evento ao desmontar o componente
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }, []);
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   return (
     <footer className={styles.footer}>
       <div className={styles.divFirstLine}>
-        <div className={styles.leftSection}> 
-        {shouldShowFirstIcon && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="22"
-            viewBox="0 0 24 22"
-            fill="none"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M0 4.41904C0 0.139537 5.35289 -0.803163 7.80629 2.70326C10.2648 6.21694 11.7134 10.4917 11.7301 15.1045C11.7301 10.5322 13.1371 6.28915 15.5409 2.78611C17.8898 -0.636952 23.0647 0.267582 23.0647 4.41905V9.91066C23.0647 16.2798 17.9015 21.443 11.5324 21.443C5.16321 21.443 0 16.2798 0 9.91065V4.41904Z"
-              fill="white"
-            />
-          </svg>
-        )}
+        <div className={styles.leftSection}>
+          {shouldShowFirstIcon && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="22"
+              viewBox="0 0 24 22"
+              fill="none"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M0 4.41904C0 0.139537 5.35289 -0.803163 7.80629 2.70326C10.2648 6.21694 11.7134 10.4917 11.7301 15.1045C11.7301 10.5322 13.1371 6.28915 15.5409 2.78611C17.8898 -0.636952 23.0647 0.267582 23.0647 4.41905V9.91066C23.0647 16.2798 17.9015 21.443 11.5324 21.443C5.16321 21.443 0 16.2798 0 9.91065V4.41904Z"
+                fill="white"
+              />
+            </svg>
+          )}
           <h1>FitMe</h1>
         </div>
         <div className={styles.centerSection}>
@@ -51,9 +49,6 @@ function Footer() {
         <div className={styles.rightSection}>
           <h3>Contact: +91 1234567899</h3>
         </div>
-
-
-            
       </div>
       <div className={styles.divSecondLine}>
         {/* Facebook Icon */}
